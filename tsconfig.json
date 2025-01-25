@@ -1,12 +1,12 @@
 {
   "extends": "expo/tsconfig.base",
-  "compilerOptions": {
+  "compilerOptions": {"jsx": "react-native",  // Ensure this is set for React Native projects
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowJs": true,
     "strict": true,
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    }
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
     "**/*.ts",
