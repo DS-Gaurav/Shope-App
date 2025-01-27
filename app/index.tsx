@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Image, FlatList, TouchableOpacity, StyleSheet, ScrollView, Animated, TextInput } from "react-native";
+import { View, Text, Image, FlatList, TouchableOpacity, StyleSheet, ScrollView, Animated, TextInput,Alert } from "react-native";
 import contentfulClient from "../contentfull"; // Ensure correct import
 import { useRouter } from "expo-router"; // Import useRouter
 
@@ -96,7 +96,18 @@ export default function Index() {
         }>
           <Text style={styles.addToCartText}>Add to Cart</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buynowButton}>
+        <TouchableOpacity style={styles.buynowButton} onPress={() => {
+          Alert.alert("Order Confirmation", `${item.name} has been successfully ordered!`);
+          router.push({
+            pathname: "/order",
+            params: {
+              id: item.id,
+              name: item.name,
+              price: item.price,
+              image: item.image.uri, // Pass image URL as a string
+            },
+          });
+        }}>
           <Text style={styles.buynowText}>Buy Now</Text>
         </TouchableOpacity>
       </View>
